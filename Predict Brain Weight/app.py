@@ -11,22 +11,27 @@ import numpy as np
 import pickle
 
 app = Flask(__name__)
-pickle_in = open('classifier.pkl', 'rb')
+pickle_in = open("classifier.pkl", 'rb')
 classifier=pickle.load(pickle_in)
+
+
 
 
 @app.route('/')
 def welcome():
     return "Welcome to Flask Learning for Docker"
 
-@app.route('/predict')
+
+
+@app.route('/predict_head')
 def predict_brain_weight():
     headsize = request.args.get('Head Size(cm^3)')
-    prediction = classifier.predict([[headsize]])
+    prediction = classifier.predict([headsize])
     return "Predictions (by model) = " + str(prediction)
 
 
-@app.route('/predict_file', methods=["POST"])
+
+@app.route('/predict_head_file', methods=["POST"])
 def predict_brain_weight_file():
     df_test = pd.read_csv(request.files.get("file"))
     prediction = classifier.predict(df_test)

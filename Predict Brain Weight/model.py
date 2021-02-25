@@ -7,13 +7,9 @@ import math
 
 #importing dataset
 dataset = pd.read_csv("E:\\ML Zero to Hero\\headbrain.csv")
-x = dataset["Head Size(cm^3)"]
-y = dataset["Brain Weight(grams)"]
+X = dataset.iloc[:, :-1]
+Y = dataset.iloc[:, -1]
 
-
-#Reshaping the input into 1D array
-X = np.array(x).reshape(-1,1)
-Y = np.array(y).reshape(-1,1)
 
 
 #training the model
