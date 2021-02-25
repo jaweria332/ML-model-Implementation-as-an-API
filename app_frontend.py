@@ -78,7 +78,7 @@ def predict_note_file():
     """
     df_test = pd.read_csv(request.files.get("file"))
     prediction = classifier.predict(df_test)
-    return "Predictions (by model) = " + str(list(prediction))
+    return str(list(prediction))
 
 if __name__=='__main__':
     app.run()
