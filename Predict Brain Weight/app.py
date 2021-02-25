@@ -19,14 +19,14 @@ classifier=pickle.load(pickle_in)
 
 @app.route('/')
 def welcome():
-    return "Welcome to Flask Learning for Docker"
+    return "Welcome to Brain-Weight VS Head-Size Prediction"
 
 
 
 @app.route('/predict_head')
 def predict_brain_weight():
     headsize = request.args.get('Head Size(cm^3)')
-    prediction = classifier.predict([headsize])
+    prediction = classifier.predict([[headsize]])
     return "Predictions (by model) = " + str(prediction)
 
 
